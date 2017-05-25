@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- <constant name="struts.objectFactory" value="spring" /> 
+	
+	<constant name="struts.multipart.maxSize" value="1048576000"/>
+	<constant name="struts.multipart.saveDir" value="/tmp"/> -->
+    <!-- <constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true"/>   -->
+	<package name="neo4j" extends="struts-default">
+	    <action name="MainPage" class="com.neo4j.view.CricleOfFriendAction" method="MainPage">
+			<result name="success">MainPage.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="postMoment" class="com.neo4j.view.CricleOfFriendAction" method="postMoment">
+			<result name="success" type="redirectAction">MainPage</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="deleteMoment" class="com.neo4j.view.CricleOfFriendAction" method="deleteMoment">
+			<result name="success" type="redirectAction">MainPage</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="commentMoment" class="com.neo4j.view.CricleOfFriendAction" method="commentMoment">
+			<result name="success" type="redirectAction">MainPage</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="Login" class="com.neo4j.view.LoginAction" method="Login">
+			<result name="success" type="redirectAction">MainPage</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="Logout" class="com.neo4j.view.LoginAction" method="Logout">
+			<result name="success">login.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="Register" class="com.neo4j.view.RegisterAction" method="Register">
+			<result name="success" type="redirect">login.jsp</result>
+			<result name="error">register.jsp</result>
+		</action>
+		<action name="ObtainOwnFollowers" class="com.neo4j.view.FriendAction" method="ObtainOwnFollowers">
+			<result name="success">FriendList.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="ObtainOwnFans" class="com.neo4j.view.FriendAction" method="ObtainOwnFans">
+			<result name="success">FriendList.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="ObtainPopularUsers" class="com.neo4j.view.FriendAction" method="ObtainPopularUsers">
+			<result name="success">FriendList.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="SearchByName" class="com.neo4j.view.FriendAction" method="SearchByName">
+			<result name="success">FriendList.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="createFollow" class="com.neo4j.view.FriendAction" method="createFollow">
+			<result name="success" type="redirectAction">ObtainOwnFollowers</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="deleteFollow" class="com.neo4j.view.FriendAction" method="deleteFollow">
+			<result name="success" type="redirectAction">ObtainOwnFollowers</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="recommendFriends" class="com.neo4j.view.FriendAction" method="recommendFriends">
+			<result name="success">FriendList.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="ObtainTopicMoment" class="com.neo4j.view.CricleOfFriendAction" method="ObtainTopicMoment">
+			<result name="success">MainPage.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="ObtainUserMoment" class="com.neo4j.view.CricleOfFriendAction" method="ObtainUserMoment">
+			<result name="success" >WeiboInfo.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="ObtainUserFans" class="com.neo4j.view.FriendAction" method="ObtainUserFans">
+			<result name="success">FansInfo.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+		<action name="ObtainUserFallows" class="com.neo4j.view.FriendAction" method="ObtainUserFallows">
+			<result name="success">FollowersInfo.jsp</result>
+			<result name="error">index.jsp</result>
+		</action>
+	</package>
+
+	<package name="neo4jJson" extends="json-default">
+		<action name="IsExist" class="com.neo4j.view.RegisterAction" method="IsExist">
+			<result name = "success" type="json">
+    			<param name="root">map</param>
+    		</result>
+			<result name="error" type="json">
+				<param name="root">map</param>
+			</result>
+		</action>
+		<action name="likeMoment" class="com.neo4j.view.CricleOfFriendAction" method="likeMoment">
+			<result name = "success" type="json">
+    			<param name="root">map</param>
+    		</result>
+			<result name="error" type="json">
+				<param name="root">map</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>    

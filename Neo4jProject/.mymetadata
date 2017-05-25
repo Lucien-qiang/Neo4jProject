@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Neo4jProject"
+  id="myeclipse.1483373919370"
+  context-root="/Neo4jProject"
+  j2ee-spec="6.0"
+  archive="Neo4jProject.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
